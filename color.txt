@@ -1,0 +1,7 @@
+contrastbg=#f948ff
+lightest=#baff79
+light=#9bfc56
+mid=#68d32e
+shadow=#6a8c60
+dark=#121a12
+darkest=#000000

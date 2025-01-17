@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="indexstyles.css">
+
+  <script src="https://unpkg.com/webamp@1.4.0/built/webamp.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <title>lunospace</title>
+  <link rel="icon" type="image/x-icon" href="images/shutdownn.png">
+  <!-- Удалить эту строку: <script src="https://unpkg.com/webamp@1.4.0/built/webamp.bundle.min.js"></script> -->
+  <style id="dynamic-styles"></style>
+</head>
+
+
+<body onload="startTime()">
+  <div class="menu">
+    <div class="drop-up">
+      <button class="box border" onclick="toggleDropUp()"><B>Start</B></button>
+      <div class="drop-up-content" id="dropUpContent">
+        <a href="index.html#" onclick="openTab(2)"><img
+            src="https://lostlove.neocities.org/images\computer.png">Home</a>
+        <a href="index.html#" onclick="openTab(3)"><img
+            src="https://lostlove.neocities.org/images\terminal.png">Terminal</a>
+        <a href="index.html#" onclick="openTab(5)"><img
+            src="https://lostlove.neocities.org/images\chatbox.png">Chatbox</a>
+        <a href="index.html#" onclick="openTab(6)"><img
+            src="https://lostlove.neocities.org/images\other.png">Updates</a>
+        <a href="index.html#" onclick="openTab(7)"><img
+            src="https://lostlove.neocities.org/images\todo32.png">Information</a>
+        <a href="index.html#" onclick="openTab(8)"><img src="https://lostlove.neocities.org/images\todo32.png">MEDIA</a>
+        <!-- Удалить неиспользуемые элементы:
+        <div class="drop-divider"> </div>
+        <a href="index.html#" onclick="openTab(5)"><img src="https://lostlove.neocities.org/images\logoff.png">Log off</a>
+        <a href="index.html#" onclick="openTab(5)"><img src="https://lostlove.neocities.org/images\shutdownn.png">Shut down</a>
+        -->
+      </div>
+    </div>
+    <div class="divider"></div>
+    <button class="box border" id="tab2" onclick="closeTab(2)">Home</button>
+    <button class="box border" id="tab3" onclick="closeTab(3)" style="display:none">Terminal</button>
+    <button class="box border" id="tab5" onclick="closeTab(5)" style="display:none">Chatbox</button>
+    <button class="box border" id="tab6" onclick="closeTab(6)">Updates</button>
+    <button class="box border" id="tab7" onclick="closeTab(7)">Information</button>
+    <button class="box border" id="tab8" onclick="closeTab(8)">Media</button>
+    <button class="box border" id="tab9" onclick="closeTab(9)">Edit</button>
+    <p id="clock" style="float: right;"></p>
+  </div>
+
+
+  <div class="icons-right">
+    <button class="icon-right" onclick="openTab(9)"><img src="myimg/editicon.png"><br>Edit</button>
+  </div>
+
+  <div class="icons">
+    <button class="icon" onclick="openTab(5)"><img
+        src="https://lostlove.neocities.org/images\chatbox.png"><br>Chatbox</button>
+    <button class="icon" onclick="openTab(3)"><img
+        src="https://lostlove.neocities.org/images\terminal.png"><br>Terminal</button>
+    <button class="icon" onclick="openTab(6)"><img
+        src="https://lostlove.neocities.org/images\other.png"><br>Updates</button>
+    <button class="icon" onclick="openTab(7)"><img
+        src="https://lostlove.neocities.org/images\todo32.png"><br>Info</button>
+    <button class="icon" onclick="openTab(8)"><img src="https://i.imgur.com/TVsXnTH.png"><br>Media</button>
+    <button class="icon opennew" data-target="html/journal.html"><img
+        src="https://lostlove.neocities.org/images\journal.png"><br><img
+        src="https://lostlove.neocities.org/images\shortcut.png" class="shortcut">Journal</button>
+    <button class="icon opennew" data-target="blog.html"><img
+        src="https://lostlove.neocities.org/images\notepad.png"><br><img
+        src="https://lostlove.neocities.org/images\shortcut.png" class="shortcut">Blog</button>
+    <button class="icon opennew" data-target="links/links.html"><img
+        src="https://lostlove.neocities.org/images\links.png"><br><img
+        src="https://lostlove.neocities.org/images\shortcut.png" class="shortcut">Lit. Links</button>
+    <button class="icon opennew" data-target="html/ephemerality.html"><img
+        src="https://lostlove.neocities.org/images\explorer.png"><br><img
+        src="https://lostlove.neocities.org/images\shortcut.png" class="shortcut">Ephemeral</button>
+    <button class="icon opennew" data-target="rooms/room1.html"><img
+        src="https://lostlove.neocities.org/images\rooms.png"><br><img
+        src="https://lostlove.neocities.org/images\shortcut.png" class="shortcut">Rooms</button>
+  </div>
+  </div>
+
+  <div id="div5" class="hidden-div draggable">
+    <div class="header"><b>Chatbox</b>
+      <button class="x-button border" onclick="closeTab(5)">X</button>
+    </div>
+    <div class="explorer-navigator">
+      <span class="nav-tab"><u>F</u>ile</span> <span class="nav-tab"><u>E</u>dit</span><span
+        class="nav-tab"><u>S</u>earch</span><span class="nav-tab"><u>H</u>elp</span>
+    </div>
+    <div class="content">
+      <iframe src="https://www5.cbox.ws/box/?boxid=932992&boxtag=gZWV9Y" width="100%" height="260"
+        allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0"
+        scrolling="auto"></iframe>
+    </div>
+  </div>
+
+  <div id="div3" class="hidden-div draggable">
+    <div class="header"><img src="https://lostlove.neocities.org/images\terminal.png"><b>Terminal</b><button
+        class="x-button border" onclick="closeTab(3)">X</button></div>
+    <div class="content"><iframe src="html/terminal.html" height="300" width="485"></iframe></div>
+  </div>
+
+  <!-- Удалить div4, если он не используется -->
+  <!--
+  <div id="div4" class="hidden-div draggable">
+    <div class="header"><img src="https://lostlove.neocities.org/images\notepad.png"><b>blog</b>
+      <button class="x-button border" onclick="closeTab(4)">X</button>
+    </div>
+    <div class="content">this is under construction!!!</div>
+  </div>
+  -->
+
+
+
+  <div class="onscreen"></div>
+
+  <div id="div2" class="hidden-div draggable">
+    <div class="header"><img src="images/shutdownn.png"
+        style="height: 20px; width: 20px; padding-top: 2px;"><b>lunospace</b>
+      <button class="x-button border" onclick="closeTab(2)">X</button>
+    </div>
+    <div class="explorer-navigator">
+      <span class="nav-tab"><u>F</u>ile</span> <span class="nav-tab"><u>E</u>dit</span><span
+        class="nav-tab"><u>S</u>earch</span><span class="nav-tab"><u>H</u>elp</span>
+    </div>
+    <span class="nav-search-bar">
+      <div class="explorer-navigator">
+        <span class="back-button border" data-src="html/cover.html" onclick="loadFrame(this)">&#60;</span>
+        <span class="address-text"> Address </span>
+        <span class="nav-search-bar">
+          <span class="search-bar-text">My Documents</span></span>
+      </div>
+      <div class="content">
+        <iframe src="html/cover.html" id="frame2"></iframe>
+      </div>
+      <div class="menulower">
+        <div class="main-option border" data-src="html/cover.html" onclick="loadFrame(this)"><img
+            src="https://i.imgur.com/wxGBOYc.png"><br>homepage</div>
+        <div class="main-option border" data-src="html/aboutme.html" onclick="loadFrame(this)"><img
+            src="https://i.imgur.com/kwjK2yv.png"><br>about me</div>
+        <div class="main-option border" data-src="html/sitemap.html" onclick="loadFrame(this)"><img
+            src="https://i.imgur.com/SAO8QvY.png"><br>sitemap</div>
+        <div class="main-option border" data-src="html/links.html" onclick="loadFrame(this)"><img
+            src="https://i.imgur.com/RiwMYet.png"><br>links</div>
+        <div class="main-option border" data-src="html/miniblog.html" onclick="loadFrame(this)"><img
+            src="https://i.imgur.com/sDRKyRf.png"><br>journal</div>
+      </div>
+  </div>
+
+  <div id="div6" class="hidden-div draggable">
+    <div class="header"><img src="https://lostlove.neocities.org/images\other.png"><b>Updates</b>
+      <button class="x-button border" onclick="closeTab(6)">X</button>
+    </div>
+    <div class="content">
+      <span class="title"><img src="images/berry.png">2nd feb 2024:</span><br>
+      added "reviews.html", a place for film reviews. added a "media" folder which will include my music, film, and
+      (eventually) book pages.
+      <br><br>
+      <span class="title"><img src="images/berry.png">26th dec 2023:</span><br>
+      added "journal.html", to replace the current diary i have on my homepage as something that gives me more creative
+      freedom and space to add images and music
+      <br><br>
+      <span class="title"><img src="images/berry.png">20th nov 2023:</span><br>
+      added "rooms.html", some experimental collages. perhaps to satisfy my sudden urge to own a beautiful home
+      <br><br>
+      <span class="title"><img src="images/berry.png">19th oct 2023:</span><br>
+      added links page for monthly links including interesting articles and pieces of writing i've discovered online
+      that are worth sharing or i think i'll read again in the future
+      <br><br>
+      <span class="title"><img src="images/berry.png">26th sep 2023:</span><br>
+      made more style changes to the blog, added a toggle font option and changed dimensions a little. <Br>
+      need to paste in some more posts that i'm almost done with!
+      <br><br>
+      <span class="title"><img src="images/berry.png">2nd sep 2023:</span><br>
+      new blog posts!!<br>
+      made some styling changes to the blog page, increased contrast and font sizes a little. i still want to make it a
+      bit easier to read though, but i'm not sure what direction to go in atm.
+      <br><br>
+      <span class="title"><img src="images/berry.png">30th aug 2023:</span><br>
+      reformatted journal with detail tag, and added some new entries
+      <br><br>
+      <span class="title"><img src="images/berry.png">23nd aug 2023:</span><br>
+      changed the color scheme from space themed to something softer. i prefer this softer color scheme and i think i'll
+      be able to do more with it creatively <br>
+      redid the "cover" page in the main tab, to include information and more graphics
+      <br><br>
+      <span class="title"><img src="images/berry.png">22nd aug 2023:</span><br>
+      font and small layout changes<br>
+      new (first) blog post!
+      <br><br>
+      <span class="title"><img src="images/berry.png">8th aug 2023:</span><br>
+      small formatting changes. pasted in journal content.
+      <br><br>
+      <span class="title"><img src="images/berry.png">5th aug 2023:</span><br>
+      updated site layout (lover.os -> lunospace)!! fixed lots of messy code, hopefully it'll make future updates
+      easier.<br>
+      finally made an updates box
+      <br><br>
+      <span class="title"><img src="images/berry.png">2nd aug 2023:</span><br>
+      made some progress on the command prompt/terminal tab. i need to work out what it'll be used for in the future,
+      also need to add more commands!
+      <br><br>
+    </div>
+  </div>
+
+  <div id="div7" class="hidden-div draggable">
+    <div class="header"><img src="https://lostlove.neocities.org/images\todo32.png"><b>Information</b>
+      <button class="x-button border" onclick="closeTab(7)">X</button>
+    </div>
+    <div class="content">
+      <div class="subtitle" style="margin-bottom: 3px;"><b>site to do list</b></div>
+      - add a pixel garden page <br>
+      - add a notepad tab with ascii art <br>
+      - add more links to mutuals and sites i like <br>
+      - decrease image sizes <br>
+      - make some changes to improve readability (fix contrast isses in some places) <br>
+      - some sort of music player? maybe at the bottom of this "information" tab <br>
+      - <s>maybe redo the theme</s> 23/08/23 <br><br>
+
+      <div class="subtitle" style="margin-bottom: 4px;"><b>webrings</b></div>
+      <div id='women-web'>
+        <script type="text/javascript"
+          src="https://womenoftheinternet.neocities.org/files/onionring-variables.js"></script>
+        <script type="text/javascript" src="https://womenoftheinternet.neocities.org/files/soft-badge.js"></script>
+      </div>
+
+      <div class="subtitle" style="margin-bottom: 3px;"><b>buttons!</b></div>
+      <div class="infobottomdecor" style="padding-left: 24px">
+        <img src="images/button.gif">
+        <img src="images/neocitiesbutton.gif" style="filter: sepia(30%);">
+
+        <img src="https://i.imgur.com/Jh8fbvE.gif" style="filter: sepia(30%);">
+        <img src="https://i.imgur.com/5QrevDk.gif" style="filter: sepia(40%);">
+        <img src="https://i.imgur.com/rWvNuJt.gif" style="filter: sepia(30%);">
+        <button id="toggleButton"><img src="https://i.imgur.com/y1wYTEL.png">click me!</button>
+      </div>
+      <img src="https://i.imgur.com/XLVcsqM.png" class="bottomimage">
+      <br>
+    </div>
+  </div>
+
+  <div id="div8" class="hidden-div draggable">
+    <div class="header"><img src="https://i.imgur.com/TVsXnTH.png"><b>Media</b>
+      <button class="x-button border" onclick="closeTab(8)">X</button>
+    </div>
+    <div class="content">
+      <div class="folder"><a href="html/music.html" target=”_blank”><img
+            src="https://i.imgur.com/1pI9aWr.png"><br>music</a></div>
+      <div class="folder"><a href="html/reviews.html" target=”_blank”><img
+            src="https://i.imgur.com/beWuWAN.png"><br>film reviews</a></div>
+
+    </div>
+  </div>
+
+  <div id="div9" class="hidden-div draggable">
+    <div class="header"><img src="myimg/editicon.png"><b>Editing</b>
+      <button class="x-button border" onclick="closeTab(9)">X</button>
+    </div>
+    <div class="content">
+
+      <div class="subtitle" style="margin-bottom: 3px;"><b>color settings</b></div>
+      <div class="color-settings">
+        <div class="color-controls">
+          <label for="contrastbgColor">--contrastbg:</label>
+          <input type="color" id="contrastbgColor" value="#f948ff">
+          <input type="text" id="contrastbgHex" placeholder="#hex-код" style="width: 80px;" value="#f948ff">
+        </div>
+        <div class="color-controls">
+          <label for="lightestColor">--lightest:</label>
+          <input type="color" id="lightestColor" value="#baff79">
+          <input type="text" id="lightestHex" placeholder="#hex-код" style="width: 80px;" value="#baff79">
+        </div>
+        <div class="color-controls">
+          <label for="lightColor">--light:</label>
+          <input type="color" id="lightColor" value="#9bfc56">
+          <input type="text" id="lightHex" placeholder="#hex-код" style="width: 80px;" value="#9bfc56">
+        </div>
+        <div class="color-controls">
+          <label for="midColor">--mid:</label>
+          <input type="color" id="midColor" value="#68d32e">
+          <input type="text" id="midHex" placeholder="#hex-код" style="width: 80px;" value="#68d32e">
+        </div>
+        <div class="color-controls">
+          <label for="shadowColor">--shadow:</label>
+          <input type="color" id="shadowColor" value="#6a8c60">
+          <input type="text" id="shadowHex" placeholder="#hex-код" style="width: 80px;" value="#6a8c60">
+        </div>
+        <div class="color-controls">
+          <label for="darkColor">--dark:</label>
+          <input type="color" id="darkColor" value="#121a12">
+          <input type="text" id="darkHex" placeholder="#hex-код" style="width: 80px;" value="#121a12">
+        </div>
+        <div class="color-controls">
+          <label for="darkestColor">--darkest:</label>
+          <input type="color" id="darkestColor" value="#000000">
+          <input type="text" id="darkestHex" placeholder="#hex-код" style="width: 80px;" value="#000000">
+        </div>
+      </div>
+      <button id="saveColors" class="border">Save Changes</button>
+
+      <div class="subtitle" style="margin-bottom: 3px;"><b>site to do list</b></div>
+      - add a pixel garden page <br>
+      - add a notepad tab with ascii art <br>
+      - add more links to mutuals and sites i like <br>
+      - decrease image sizes <br>
+      - make some changes to improve readability (fix contrast isses in some places) <br>
+      - some sort of music player? maybe at the bottom of this "information" tab <br>
+      - <s>maybe redo the theme</s> 23/08/23 <br><br>
+
+      <div class="subtitle" style="margin-bottom: 4px;"><b>webrings</b></div>
+      <div id='women-web'>
+
+        <div class="color-controls">
+          <label for="selectBackgroundGif">select background gif:</label>
+          <a href="index.html#" onclick="openTab(10)"><img src="https://lostlove.neocities.org/images\todo32.png"></a>
+        </div>
+        <div id="background-gif-container"></div>
+        <div id="gifSelector" class="modal hidden-div">
+          <div class="modal-content">
+            <span class="close-button" onclick="closeGifSelector()">&times;</span>
+            <ul id="gifList"></ul>
+          </div>
+        </div>
+        <div id="gifIconsContainer"></div> <!-- Контейнер для маленьких иконок GIF -->
+      </div>
+
+      <div class="subtitle" style="margin-bottom: 3px;"><b>buttons!</b></div>
+      <div class="infobottomdecor" style="padding-left: 24px">
+        <img src="images/button.gif">
+        <img src="images/neocitiesbutton.gif" style="filter: sepia(30%);">
+
+        <img src="https://i.imgur.com/Jh8fbvE.gif" style="filter: sepia(30%);">
+        <img src="https://i.imgur.com/5QrevDk.gif" style="filter: sepia(40%);">
+        <img src="https://i.imgur.com/rWvNuJt.gif" style="filter: sepia(30%);">
+        <button id="toggleButton"><img src="https://i.imgur.com/y1wYTEL.png">click me!</button>
+      </div>
+      <img src="https://i.imgur.com/XLVcsqM.png" class="bottomimage">
+      <br>
+    </div>
+  </div>
+
+  <div id="div10" class="hidden-div draggable">
+    <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center;">
+        <img src="">
+        <b>Gifeditor</b>
+      </div>
+      <div class="toggle-container">
+        <input type="checkbox" id="toggleDrag" class="toggle-input" onclick="toggleDragMode()">
+        <label for="toggleDrag" class="toggle-label"></label>
+      </div>
+      <span id="gifCounter">0/5</span>
+      <button class="x-button border" onclick="closeTab(10)">X</button>
+    </div>
+    <div class="content" id="gif-list-container">
+      <!-- сюда будут добавлены динамически папки с гифками -->
+    </div>
+  </div>
+
+
+  <div class="cornerimg">
+    <img src="images/shells/shell1.png" class="toggle-image">
+    <img src="images/shells/shell2.png" class="toggle-image">
+    <img src="images/shells/shell3.png" class="toggle-image">
+    <img src="images/shells/shell4.png" class="toggle-image">
+    <img src="images/shells/shell5.png" class="toggle-image">
+    <img src="images/shells/shell6.png" class="toggle-image">
+    <img src="images/shells/shell7.png" class="toggle-image">
+    <img src="images/shells/shell8.png" class="toggle-image">
+  </div>
+
+
+  <script src="indexscript.js"></script>
+
+
+
+</body>
+
+</html>
